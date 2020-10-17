@@ -1,1 +1,0 @@
-USER_TOKEN = '7f6a16107365faa7f55a5b0b3c050ef6bc8de39b'
