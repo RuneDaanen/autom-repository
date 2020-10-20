@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#! autom_repo/bin/active
 import os
 import requests
 import argparse
@@ -30,6 +30,7 @@ headers = {
   "Accept": "application/vnd.github.v3+json"
 }
 
+# set your installation
 def install_project_files_kind():
   result = os.system(f"echo '# {repo_name}' >> README.md")
 
@@ -38,22 +39,23 @@ def install_project_files_kind():
     result = os.system("npm i node-sass")
   if (repo_kind == 'python'):
     result = os.system(f"python3 -m venv {repo_name} && touch __init__.py && touch app.py && echo '/{repo_name}' >> .gitignore")
-  if (repo_kind == '.net'):
-    result = os.system(f"")
+  if (repo_kind == 'flutter'):
+    result = os.system(f"flutter create ./")
 
   return result
 
+# set your folder structuur
 def create_project_files_dir():
-  REPO_PATH = "/Users/thor/Projects/"
-  os.chdir(REPO_PATH)
+  REPO_PATH = "./Projects/MyLabs/" # set your default folder
 
   if repo_dir:
+    os.chdir(REPO_PATH)
     os.system("mkdir " + repo_dir)
-    REPO_PATH = f"/Users/thor/Projects/{repo_dir}/"
+    REPO_PATH = f"./{repo_dir}/"
 
   os.chdir(REPO_PATH)
   os.system("mkdir " + repo_name)
-  os.chdir(REPO_PATH + repo_name)
+  os.chdir("./" + repo_name)
 
 # create repository
 try:
